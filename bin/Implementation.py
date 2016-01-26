@@ -1,4 +1,6 @@
 from math import sqrt
+import itertools
+from Decorators import measure_decorator
 
 
 # Implementation: Angry professor
@@ -104,15 +106,15 @@ def caesar(c, x):
 
 
 # Implementation: The Grid Search
-def grid_search(G, P):
+def grid_search(g, p):
     pattern_found = False
 
-    for i in range(0, len(G) - len(P) + 1):
-        for j in range(0, len(G[i]) - len(P[0]) + 1):
-            for p_i in range(len(P)):
+    for i in range(0, len(g) - len(p) + 1):
+        for j in range(0, len(g[i]) - len(p[0]) + 1):
+            for p_i in range(len(p)):
                 row_pattern_found = False
-                for p_j in range(len(P[p_i])):
-                    if G[i + p_i][j + p_j] != P[p_i][p_j]:
+                for p_j in range(len(p[p_i])):
+                    if g[i + p_i][j + p_j] != p[p_i][p_j]:
                         break
                 else:
                     row_pattern_found = True
@@ -125,3 +127,57 @@ def grid_search(G, P):
         if pattern_found:
             break
     return pattern_found
+
+
+# Implementation: Cavity Map
+def find_cavities(grid):
+    for i in range(1, len(grid) - 1):
+        for j in range(1, len(grid[i]) - 1):
+            if (
+                    (grid[i - 1][j] != 'X' and int(grid[i][j]) > int(grid[i - 1][j])) and
+                    (grid[i][j + 1] != 'X' and int(grid[i][j]) > int(grid[i][j + 1])) and
+                    (grid[i + 1][j] != 'X' and int(grid[i][j]) > int(grid[i + 1][j])) and
+                    (grid[i][j - 1] != 'X' and int(grid[i][j]) > int(grid[i][j - 1]))
+            ):
+                grid[i] = grid[i][:j] + "X" + grid[i][j + 1:]
+                j += 1
+    return grid
+
+
+# Implementation: Manasa and Stones
+@measure_decorator
+def find_final_stones(n, a, b):
+    final_stones = set()
+
+    combinations = set(itertools.combinations_with_replacement("10", n))
+
+    steps = (a, b)
+
+    for combination in combinations:
+        final_stone = 0
+        for i in range(1, n):
+            final_stone += steps[int(combination[i])]
+        final_stones.add(final_stone)
+
+    return sorted(list(final_stones))
+
+
+@measure_decorator
+def find_final_stones_most_efficient(n, a, b):
+    s = set()
+    for i in range(n):
+        s.add(b * i + (n - i - 1) * a)
+    return sorted(list(s))
+
+
+# Implementation: Library Fine
+def calculate_fine(d1, d2):
+    if d1[2] > d2[2]:
+        return 10000
+    if d1[2] == d2[2] and d1[1] > d2[1]:
+        return 500 * (d1[1] - d2[1])
+    if d1[2] == d2[2] and d1[1] == d2[1] and d1[0] > d2[0]:
+        return 15 * (d1[0] - d2[0])
+    return 0
+
+
