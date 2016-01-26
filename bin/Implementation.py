@@ -101,3 +101,27 @@ def caesar(c, x):
         return chr(ic + x % 26)
     else:
         return chr(ic + x % 26 - 26)
+
+
+# Implementation: The Grid Search
+def grid_search(G, P):
+    pattern_found = False
+
+    for i in range(0, len(G) - len(P) + 1):
+        for j in range(0, len(G[i]) - len(P[0]) + 1):
+            for p_i in range(len(P)):
+                row_pattern_found = False
+                for p_j in range(len(P[p_i])):
+                    if G[i + p_i][j + p_j] != P[p_i][p_j]:
+                        break
+                else:
+                    row_pattern_found = True
+                if not row_pattern_found:
+                    break
+            else:
+                pattern_found = True
+            if pattern_found:
+                break
+        if pattern_found:
+            break
+    return pattern_found
