@@ -23,6 +23,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+.idea/misc.xml
 
 # Virtual environment
 .venv

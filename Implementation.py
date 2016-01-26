@@ -1,5 +1,6 @@
 from math import sqrt
 
+
 # Implementation: Angry professor
 def check_present_students(students, k):
     present_students = sum(1 for x in students if x < 0)
@@ -47,6 +48,7 @@ def find_squares(a, b):
     squares = [x ** 2 for x in range(int(sqrt(b)) + 1) if a <= x ** 2 <= b]
     return len(squares)
 
+
 # Implementation: Service Lane
 def max_vehicle(service_lane, i, j):
     return min(service_lane[i:j])
@@ -76,12 +78,12 @@ def calculate_chocolates(n, c, m):
 
 
 # Implementation: Chocolate Feast Alternative
-def calculate_chocolates(n, c, m):
+def calculate_chocolates_alt(n, c, m):
     result = envelops = n // c
 
     while envelops >= m:
-        envelops += 1 - m #Every time i give m chocolates to get a new one
-        result += 1 #Add the new one chocolate
+        envelops += 1 - m  # Every time i give m chocolates to get a new one
+        result += 1  # Add the new one chocolate
 
     return result
 
@@ -99,5 +101,3 @@ def caesar(c, x):
         return chr(ic + x % 26)
     else:
         return chr(ic + x % 26 - 26)
-
-
