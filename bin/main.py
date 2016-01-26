@@ -1,3 +1,4 @@
+import os
 import Implementation
 
 
@@ -8,9 +9,9 @@ def main():
 
     print(result)
 
-    # fp = open("answers.txt", "r")
+    # fp = open(os.path.dirname(__file__) + "/../assets/text/answers.txt", "r")
     #
-    # with open("input.txt", "r") as input_file:
+    # with open(os.path.dirname(__file__) + "/../assets/text/input.txt", "r") as input_file:
     #     n = int(input_file.readline().strip())
     #     print(n)
     #     for line in input_file:
