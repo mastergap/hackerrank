@@ -26,7 +26,10 @@ def find_decent_number(n):
         else:
             return -1
 
-        return int("".join("5" for _ in range(digits_5)) + "".join("3" for _ in range(digits_3)))
+        return int(
+            "".join("5" for _ in range(digits_5)) +
+            "".join("3" for _ in range(digits_3))
+        )
 
 
 # Implementation: Utopian Tree
@@ -134,10 +137,14 @@ def find_cavities(grid):
     for i in range(1, len(grid) - 1):
         for j in range(1, len(grid[i]) - 1):
             if (
-                    (grid[i - 1][j] != 'X' and int(grid[i][j]) > int(grid[i - 1][j])) and
-                    (grid[i][j + 1] != 'X' and int(grid[i][j]) > int(grid[i][j + 1])) and
-                    (grid[i + 1][j] != 'X' and int(grid[i][j]) > int(grid[i + 1][j])) and
-                    (grid[i][j - 1] != 'X' and int(grid[i][j]) > int(grid[i][j - 1]))
+                (grid[i - 1][j] != 'X' and
+                    int(grid[i][j]) > int(grid[i - 1][j])) and
+                (grid[i][j + 1] != 'X' and
+                    int(grid[i][j]) > int(grid[i][j + 1])) and
+                (grid[i + 1][j] != 'X' and
+                    int(grid[i][j]) > int(grid[i + 1][j])) and
+                (grid[i][j - 1] != 'X' and
+                    int(grid[i][j]) > int(grid[i][j - 1]))
             ):
                 grid[i] = grid[i][:j] + "X" + grid[i][j + 1:]
                 j += 1
@@ -179,5 +186,3 @@ def calculate_fine(d1, d2):
     if d1[2] == d2[2] and d1[1] == d2[1] and d1[0] > d2[0]:
         return 15 * (d1[0] - d2[0])
     return 0
-
-
