@@ -3,7 +3,17 @@ import Implementation
 
 
 def main():
-    print(Implementation.calculate_fine((9, 6, 2015), (6, 6, 2015)))
+    with open(os.path.dirname(__file__) + "/../assets/text/input.txt", "r") as input_file:
+        n,m = input_file.readline().strip().split(' ')
+        n,m = [int(n),int(m)]
+        topic = []
+        topic_i = 0
+        for topic_i in range(n):
+           topic_t = str(input_file.readline().strip())
+           topic.append(topic_t)
+        max, teams = Implementation.max_known_topics_teams(topic)
+        print(max)
+        print(teams)
 
 
     # fp = open(os.path.dirname(__file__) + "/../assets/text/answers.txt", "r")

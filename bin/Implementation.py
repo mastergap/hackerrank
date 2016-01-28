@@ -189,13 +189,22 @@ def calculate_fine(d1, d2):
 
 
 # Implementation: ACM ICPC Team
-# Wrong idea!!! Bynary identify also what specific topic a person knows.
-# 2 persons knowing the same topic in a team count as one
-#
-def known_topics_number(person):
-    return sum(map(int, list(person)))
+def known_topics_number(person1, person2):
+    return sum(1 if x[0] == '1' or x[1] == "1" else 0 for x in zip(person1, person2))
 
 
-def func(persons):
-    persons = sorted(map(known_topics_number, persons))
-    max_known_topics = persons(-1) + persons(-2)
+
+def max_known_topics_teams(persons):
+    max_known_topics = 0
+    max_known_topics_teams = 0
+
+    for i, person1 in enumerate(persons):
+        for person2 in persons[i + 1:]:
+            temp = known_topics_number(person1, person2)
+            if temp > max_known_topics:
+                max_known_topics_teams = 1
+                max_known_topics = temp
+            elif temp == max_known_topics:
+                max_known_topics_teams += 1
+
+    return max_known_topics, max_known_topics_teams
