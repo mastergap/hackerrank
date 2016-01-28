@@ -1,4 +1,4 @@
-from math import sqrt
+from math import sqrt, floor, ceil
 import itertools
 from Decorators import measure_decorator
 
@@ -193,18 +193,128 @@ def known_topics_number(person1, person2):
     return sum(1 if x[0] == '1' or x[1] == "1" else 0 for x in zip(person1, person2))
 
 
-
 def max_known_topics_teams(persons):
     max_known_topics = 0
-    max_known_topics_teams = 0
+    max_known_topics_teams_count = 0
 
     for i, person1 in enumerate(persons):
         for person2 in persons[i + 1:]:
             temp = known_topics_number(person1, person2)
             if temp > max_known_topics:
-                max_known_topics_teams = 1
+                max_known_topics_teams_count = 1
                 max_known_topics = temp
             elif temp == max_known_topics:
-                max_known_topics_teams += 1
+                max_known_topics_teams_count += 1
 
-    return max_known_topics, max_known_topics_teams
+    return max_known_topics, max_known_topics_teams_count
+
+
+# Implementation: Extra long factorials
+def factorial(n):
+    f = n
+    for i in range(n - 1, 0, -1):
+        f = f * i
+    return f
+
+
+# Implementation: Taum and B'day
+def calculate_min_gifts_cost(b_count, w_count, b_cost, w_cost, conversion_cost):
+    real_b_cost = b_cost if b_cost <= conversion_cost + w_cost else conversion_cost + w_cost
+    real_w_cost = w_cost if w_cost <= conversion_cost + b_cost else conversion_cost + b_cost
+
+    return (real_b_cost * b_count) + (real_w_cost * w_count)
+
+
+# Omplementation: The time in words
+def time_to_words(h, m):
+    hours = {
+        0: "o' clock",
+        1: "one",
+        2: "two",
+        3: "three",
+        4: "four",
+        5: "five",
+        6: "six",
+        7: "seven",
+        8: "eight",
+        9: "nine",
+        10: "ten",
+        11: "eleven",
+        12: "twelve"
+    }
+
+    minutes = {
+        0: "o' clock",
+        1: "one minute",
+        2: "two minutes",
+        3: "three minutes",
+        4: "four minutes",
+        5: "five minutes",
+        6: "six minutes",
+        7: "seven minutes",
+        8: "eight minutes",
+        9: "nine minutes",
+        10: "ten minutes",
+        11: "eleven minutes",
+        12: "twelve minutes",
+        13: "thirteen minutes",
+        14: "fourteen minutes",
+        15: "quarter",
+        16: "sixteen minutes",
+        17: "seventeen minutes",
+        18: "eighteen minutes",
+        19: "nineteen minutes",
+        20: "twenty minutes",
+        21: "twenty one minutes",
+        22: "twenty two minutes",
+        23: "twenty three minutes",
+        24: "twenty four minutes",
+        25: "twenty five minutes",
+        26: "twenty six minutes",
+        27: "twenty seven minutes",
+        28: "twenty eight minutes",
+        29: "twenty nine minutes",
+        30: "half",
+        45: "quarter"
+    }
+
+    if m == 0:
+        return hours[h] + " " + minutes[m]
+    if m == 45:
+        return minutes[m] + " to " + hours[(h + 1) % 12]
+    elif 0 < m <= 30:
+        return minutes[m] + " past " + hours[h]
+    else:
+        return minutes[60 - m] + " to " + hours[(h + 1) % 12]
+
+
+# Implementation: Modified Kaprekar Numbers
+def find_kaprecar_numbers(p, q):
+    kaprecar_numbers = list()
+    for i in range(p, q + 1):
+        square = str(i ** 2)
+        l_piece = square[:len(square) // 2] if len(square) > 1 else "0"
+        r_piece = square[len(l_piece):] if len(square) > 1 else square
+        if int(l_piece) + int(r_piece) == i:
+            kaprecar_numbers.append(i)
+    return kaprecar_numbers
+
+
+# Implementation: Encryption
+def encrypt(text):
+    text = text.replace(" ", "")
+    num_rows = floor(sqrt(len(text)))
+    num_columns = ceil(sqrt(len(text)))
+    grid = list()
+    for i in range(0, len(text), num_columns):
+        grid.append(list(text[i:i + num_columns].ljust(num_columns)))
+
+    result = list(map(" ".join, list(map(list, list(zip(*grid))))))
+    result = [s.replace(" ", "") for s in result]
+
+    return result
+
+
+# Implementation: Matrix Rotation
+def rotate_matrix(m):
+    pass
