@@ -1,45 +1,10 @@
 import os
 import Implementation
+import Strings
 
 
 def main():
-    m0 = [
-        [1, 2, 3, 4],
-        [5, 6, 7, 8],
-        [9, 10, 11, 12]
-    ]
-
-
-    m1 = [
-        [1, 2, 3, 4, 5],
-        [6, 7, 8, 9, 10],
-        [11, 12, 13, 14, 15],
-        [16, 17, 18, 19, 20]
-    ]
-
-    m2 = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9],
-        [10, 11, 12],
-        [13, 14, 15]
-    ]
-
-    m3 = [
-        [1, 2, 3, 4],
-        [5, 6, 7, 8],
-        [9, 10, 11, 12],
-        [13, 14, 15, 16],
-        [17, 18, 19, 20]
-    ]
-
-    m4 = [
-        [1, 2, 3, 4, 5, 6],
-        [7, 8, 9, 10, 11, 12],
-        [13, 14, 15, 16, 17, 18]
-    ]
-
-    print(Implementation.rotate_matrix(m2, 12))
+    print("funny" if Strings.is_funny("acxz", "bcxz") else "not funny")
 
 
     # fp = open(os.path.dirname(__file__) + "/../assets/text/answers.txt", "r")
