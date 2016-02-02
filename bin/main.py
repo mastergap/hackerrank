@@ -3,7 +3,43 @@ import Implementation
 
 
 def main():
-    print(" ".join(Implementation.encrypt("if man was meant to stay on the ground god would have given us roots")))
+    m0 = [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11, 12]
+    ]
+
+
+    m1 = [
+        [1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20]
+    ]
+
+    m2 = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+        [10, 11, 12],
+        [13, 14, 15]
+    ]
+
+    m3 = [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11, 12],
+        [13, 14, 15, 16],
+        [17, 18, 19, 20]
+    ]
+
+    m4 = [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+        [13, 14, 15, 16, 17, 18]
+    ]
+
+    print(Implementation.rotate_matrix(m4, 2))
 
 
     # fp = open(os.path.dirname(__file__) + "/../assets/text/answers.txt", "r")
