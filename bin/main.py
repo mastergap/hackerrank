@@ -39,7 +39,7 @@ def main():
         [13, 14, 15, 16, 17, 18]
     ]
 
-    print(Implementation.rotate_matrix(m4, 2))
+    print(Implementation.rotate_matrix(m2, 12))
 
 
     # fp = open(os.path.dirname(__file__) + "/../assets/text/answers.txt", "r")

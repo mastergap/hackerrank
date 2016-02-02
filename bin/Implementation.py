@@ -319,37 +319,37 @@ def encrypt(text):
 def rotate_matrix(m, n):
     max_c = min(len(m), len(m[0])) // 2 if min(len(m), len(m[0])) % 2 == 0 else min(len(m), len(m[0])) // 2 + 1
 
-    for _ in range(n):
-        for c in range(max_c):
-                temp = m[c][c]
+    for c in range(max_c):
+        for _ in range(n % ((len(m) - 2 * c) * 2 + (((len(m[0]) - 2 * c) * 2) - 4))):
+            temp = m[c][c]
 
-                # rotate upper row
-                for j in range(c + 1, len(m[0]) - c):
-                    m[c][j - 1] = m[c][j]
+            # rotate upper row
+            for j in range(c + 1, len(m[0]) - c):
+                m[c][j - 1] = m[c][j]
 
-                # rotate right column
-                for i in range(c + 1, len(m) - c):
-                    m[i - 1][len(m[0]) - c - 1] = m[i][len(m[0]) - c - 1]
+            # rotate right column
+            for i in range(c + 1, len(m) - c):
+                m[i - 1][len(m[0]) - c - 1] = m[i][len(m[0]) - c - 1]
 
 
-                # rotate unless we are in the middle row of a matrix with odd rows
-                if (len(m) - c * 2 != 1):
+            # rotate unless we are in the middle row of a matrix with odd rows
+            if (len(m) - c * 2 != 1):
 
-                    # rotate bottom row
-                    for j in range(len(m[0]) - c - 1, c, -1):
-                        m[len(m) - c - 1][j] = m[len(m) - c - 1][j - 1]
+                # rotate bottom row
+                for j in range(len(m[0]) - c - 1, c, -1):
+                    m[len(m) - c - 1][j] = m[len(m) - c - 1][j - 1]
 
-                    if len(m[0]) - c - 1 != c:
+                if len(m[0]) - c - 1 != c:
 
-                        # rotate left column
-                        for i in range(len(m) - c - 1, c + 1, -1):
-                            m[i][c] = m[i - 1][c]
+                    # rotate left column
+                    for i in range(len(m) - c - 1, c + 1, -1):
+                        m[i][c] = m[i - 1][c]
 
-                    if len(m[0]) - c * 2 != 1:
-                        m[c + 1][c] = temp
-                    # if we are in the middle column of a matrix with odd colums do vertical rotation
-                    else:
-                        m[len(m) - c - 1][c] = temp
+                if len(m[0]) - c * 2 != 1:
+                    m[c + 1][c] = temp
+                # if we are in the middle column of a matrix with odd colums do vertical rotation
                 else:
-                    m[c][len(m[0]) - c - 1] = temp
+                    m[len(m) - c - 1][c] = temp
+            else:
+                m[c][len(m[0]) - c - 1] = temp
     return m
