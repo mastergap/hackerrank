@@ -1,11 +1,5 @@
-import os
-import Implementation
-import Strings
-
-
 def main():
-    print("funny" if Strings.is_funny("acxz", "bcxz") else "not funny")
-
+    print("Nothing to do.")
 
     # fp = open(os.path.dirname(__file__) + "/../assets/text/answers.txt", "r")
     #

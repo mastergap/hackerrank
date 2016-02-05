@@ -1,6 +1,6 @@
 from math import sqrt, floor, ceil
 import itertools
-from Decorators import measure_decorator
+from bin.utils.Decorators import measure_decorator
 
 
 # Implementation: Angry professor
