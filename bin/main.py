@@ -1,4 +1,17 @@
+import Strings
+
 def main():
+    inputs = [
+            "abba",
+            "abcd",
+            "ifailuhkqq",
+            "hucpoltgty",
+            "ovarjsnrbf",
+            "pvmupwjjjf",
+            "iwwhrlkpek"
+        ]
+    for s in inputs:
+        Strings.find_anagram_pairs(s)
     print("Nothing to do.")
 
     # fp = open(os.path.dirname(__file__) + "/../assets/text/answers.txt", "r")

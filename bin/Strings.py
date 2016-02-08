@@ -88,11 +88,18 @@ def min_changes_to_make_anagram(s):
 def is_anagram(s1, s2):
     return Counter(s1) == Counter(s2)
 
+
+def factorial(n):
+    if n < 1:
+        return 1
+    return n * factorial(n - 1)
+
+
 def find_anagram_pairs(s):
-    counter = 0
-    for i in range(1, len(s)):
-        for j in range(0, len(s), i):
-            for k in range(j + 1, len(s)):
+    counter = sum(factorial(x) / (2 * factorial(x - 2)) for x in Counter(s).values() if x > 1)
+    for i in range(2, len(s)):
+        for j in range(0, len(s)):
+            for k in range(j + 1, len(s) - i + 1):
                 s1 = s[j:j+i]
                 s2 = s[k:k+i]
                 if is_anagram(s1, s2):
