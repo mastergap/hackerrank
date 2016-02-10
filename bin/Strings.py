@@ -1,5 +1,6 @@
 from string import ascii_lowercase
 from collections import Counter
+from bin.utils.Decorators import measure_decorator
 
 
 # Strings: Pangrams
@@ -95,8 +96,9 @@ def factorial(n):
     return n * factorial(n - 1)
 
 
+# Slowest - doesn't pass the test due to timeout
 def find_anagram_pairs(s):
-    counter = sum(factorial(x) / (2 * factorial(x - 2)) for x in Counter(s).values() if x > 1)
+    counter = sum(factorial(x) // (2 * factorial(x - 2)) for x in Counter(s).values() if x > 1)
     for i in range(2, len(s)):
         for j in range(0, len(s)):
             for k in range(j + 1, len(s) - i + 1):
@@ -104,4 +106,15 @@ def find_anagram_pairs(s):
                 s2 = s[k:k+i]
                 if is_anagram(s1, s2):
                     counter += 1
+    return counter
+
+
+# Fastest - passes the test
+def find_anagram_pairs_dictionary(s):
+    counter = sum(factorial(x) // (2 * factorial(x - 2)) for x in Counter(s).values() if x > 1)
+    for i in range(2, len(s)):
+        substrings = Counter()
+        for j in range(0, len(s) - i + 1):
+            substrings[str(sorted(s[j:j+i]))] += 1
+        counter += sum(factorial(x) // (2 * factorial(x - 2)) for x in substrings.values() if x > 1)
     return counter

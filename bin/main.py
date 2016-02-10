@@ -12,6 +12,7 @@ def main():
         ]
     for s in inputs:
         Strings.find_anagram_pairs(s)
+        Strings.find_anagram_pairs_dictionary(s)
     print("Nothing to do.")
 
     # fp = open(os.path.dirname(__file__) + "/../assets/text/answers.txt", "r")

@@ -44,3 +44,26 @@ class TestStrings(TestCase):
         ]
         results = [find_anagram_pairs(s) for s in inputs]
         assert_list_equal(outputs, results)
+
+
+    def test_find_anagram_pairs_dictionary(self):
+        inputs = [
+            "abba",
+            "abcd",
+            "ifailuhkqq",
+            "hucpoltgty",
+            "ovarjsnrbf",
+            "pvmupwjjjf",
+            "iwwhrlkpek"
+        ]
+        outputs = [
+            4,
+            0,
+            3,
+            2,
+            2,
+            6,
+            3
+        ]
+        results = [find_anagram_pairs_dictionary(s) for s in inputs]
+        assert_list_equal(outputs, results)
