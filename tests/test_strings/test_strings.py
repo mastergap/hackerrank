@@ -67,3 +67,21 @@ class TestStrings(TestCase):
         ]
         results = [find_anagram_pairs_dictionary(s) for s in inputs]
         assert_list_equal(outputs, results)
+
+
+    def test_find_character_index_to_remove_to_make_palindrome(self):
+        with open("../assets/text/sherlock_and_anagrams_input.txt", "r",) as input_file, \
+                open("../assets/text/sherlock_and_anagrams_output.txt", "r") as output_file:
+            t = int(input_file.readline().strip())
+            for _ in range(t):
+                result = find_character_index_to_remove_to_make_palindrome(input_file.readline().strip())
+                assert_equal(int(output_file.readline()), result)
+
+
+    def test_lex_smallest_string(self):
+        with open("../assets/text/shuffle_merge_input.txt", "r",) as input_file, \
+            open("../assets/text/shuffle_merge_output.txt", "r") as output_file:
+            input = input_file.readline().strip()
+            output = output_file.readline().strip()
+            result = lex_smallest_string(input)
+            assert_equal(output, result)

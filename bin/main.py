@@ -1,23 +1,19 @@
-import Strings
-
 def main():
-    inputs = [
-            "abba",
-            "abcd",
-            "ifailuhkqq",
-            "hucpoltgty",
-            "ovarjsnrbf",
-            "pvmupwjjjf",
-            "iwwhrlkpek"
+    test = [
+        {"a": 100, "b": 129},
+        {"a": 100, "b": 67},
+        {"a": 100, "b": 16},
+        {"a": 100, "b": 576},
+        {"a": 345, "b": 234}
         ]
-    for s in inputs:
-        Strings.find_anagram_pairs(s)
-        Strings.find_anagram_pairs_dictionary(s)
+
+    test.sort(key=lambda x: (x["a"], x["b"]))
+
     print("Nothing to do.")
 
     # fp = open(os.path.dirname(__file__) + "/../assets/text/answers.txt", "r")
     #
-    # with open(os.path.dirname(__file__) + "/../assets/text/input.txt", "r") as input_file:
+    # with open(os.path.dirname(__file__) + "/../assets/text/sherlock_and_anagrams_input.txt", "r") as input_file:
     #     n = int(input_file.readline().strip())
     #     print(n)
     #     for line in input_file:

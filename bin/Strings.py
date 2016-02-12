@@ -1,6 +1,5 @@
 from string import ascii_lowercase
 from collections import Counter
-from bin.utils.Decorators import measure_decorator
 
 
 # Strings: Pangrams
@@ -118,3 +117,38 @@ def find_anagram_pairs_dictionary(s):
             substrings[str(sorted(s[j:j+i]))] += 1
         counter += sum(factorial(x) // (2 * factorial(x - 2)) for x in substrings.values() if x > 1)
     return counter
+
+
+# Strings: Palindrome Index
+def is_palindrome(s):
+    for i in range(len(s) // 2):
+        if s[i] != s[len(s) - i - 1]:
+            return False
+    return True
+
+
+def find_character_index_to_remove_to_make_palindrome(s):
+    for i in range(len(s) // 2):
+        if s[i] != s[len(s) - i - 1]:
+            if is_palindrome(s[:i] + s[i + 1:]):
+                return i
+            else:
+                return len(s) - i - 1
+        # For a nonsense reason if we can remove a character we have to remove it (palindrome with even chars)
+        elif len(s) % 2 == 0 and i == len(s) // 2 - 1:
+            return i + 1
+    return -1
+
+
+# Strings: Reverse Shuffle Merge
+def lex_smallest_string(s):
+    char_counter = Counter(s)
+    # "".join(item[0] for item in Counter.items() for x in range(item[1])])
+    smallest_s = ""
+    for item in char_counter.items():
+        for _ in range(item[1] // 2):
+            smallest_s += item[0]
+
+    smallest_s = "".join(sorted(list(smallest_s)))
+
+    return smallest_s

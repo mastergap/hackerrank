@@ -1,4 +1,4 @@
-from math import sqrt, floor, ceil
+from math import sqrt, ceil
 import itertools
 from bin.utils.Decorators import measure_decorator
 
@@ -331,9 +331,8 @@ def rotate_matrix(m, n):
             for i in range(c + 1, len(m) - c):
                 m[i - 1][len(m[0]) - c - 1] = m[i][len(m[0]) - c - 1]
 
-
             # rotate unless we are in the middle row of a matrix with odd rows
-            if (len(m) - c * 2 != 1):
+            if len(m) - c * 2 != 1:
 
                 # rotate bottom row
                 for j in range(len(m[0]) - c - 1, c, -1):
