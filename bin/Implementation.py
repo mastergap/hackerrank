@@ -5,35 +5,48 @@ from bin.utils.Decorators import measure_decorator
 
 # Implementation: Angry professor
 def check_present_students(students, k):
+    """
+    :type students: list[int]
+    :type k: int
+    :rtype: str
+    """
     present_students = sum(1 for x in students if x < 0)
     return "YES" if present_students >= k else "NO"
 
 
 # Implementation: Sherlock and the beast
 def find_decent_number(n):
-        digits_5 = 0
-        digits_3 = 0
-        if n % 3 == 0:
-            digits_5 = n
-        elif n % 3 == 1 and n > 9:
-            digits_3 = 10
-            digits_5 = int(n / 3) * 3 - 9
-        elif n % 3 == 2 and n > 4:
-            digits_3 = 5
-            digits_5 = int(n / 3) * 3 - 3
-        elif n % 5 == 0:
-            digits_3 = n
-        else:
-            return -1
+    """
+    :type n: int
+    :rtype: str
+    """
+    digits_5 = 0
+    digits_3 = 0
+    if n % 3 == 0:
+        digits_5 = n
+    elif n % 3 == 1 and n > 9:
+        digits_3 = 10
+        digits_5 = int(n / 3) * 3 - 9
+    elif n % 3 == 2 and n > 4:
+        digits_3 = 5
+        digits_5 = int(n / 3) * 3 - 3
+    elif n % 5 == 0:
+        digits_3 = n
+    else:
+        return -1
 
-        return int(
-            "".join("5" for _ in range(digits_5)) +
-            "".join("3" for _ in range(digits_3))
-        )
+    return int(
+        "".join("5" for _ in range(digits_5)) +
+        "".join("3" for _ in range(digits_3))
+    )
 
 
 # Implementation: Utopian Tree
 def grow_utopian_tree(n):
+    """
+    :type n: int
+    :rtype: int
+    """
     # height = 1
     # for i in range(n):
     #     height = height * 2 if i % 2 == 0 else height + 1
@@ -45,22 +58,42 @@ def grow_utopian_tree(n):
 
 # Implementation: Find digits
 def find_digits(n):
+    """
+    :type n: int
+    :rtype: int
+    """
     return sum(1 for d in n if int(d) != 0 and int(n) % int(d) == 0)
 
 
 # Implementation: Sherlock and Squares
 def find_squares(a, b):
+    """
+    :type a: int
+    :type b: int
+    :rtype: int
+    """
     squares = [x ** 2 for x in range(int(sqrt(b)) + 1) if a <= x ** 2 <= b]
     return len(squares)
 
 
 # Implementation: Service Lane
 def max_vehicle(service_lane, i, j):
+    """
+    :type service_lane: list[int]
+    :type i: int
+    :type j: int
+    :rtype: int
+    """
     return min(service_lane[i:j])
 
 
 # Implementation: Cut the sticks
 def cut_sticks(sticks, n):
+    """
+    :type sticks: list[int]
+    :type n: int
+    :rtype: list[int]
+    """
     results = []
     for _ in range(n):
         sticks = list(map(lambda x: x - min(sticks), sticks))
@@ -72,6 +105,12 @@ def cut_sticks(sticks, n):
 
 # Implementation: Chocolate Feast
 def calculate_chocolates(n, c, m):
+    """
+    :type n: int
+    :type c: int
+    :type m: int
+    :rtype: int
+    """
     result = envelops = n // c
 
     while envelops >= m:
@@ -84,6 +123,12 @@ def calculate_chocolates(n, c, m):
 
 # Implementation: Chocolate Feast Alternative
 def calculate_chocolates_alt(n, c, m):
+    """
+    :type n: int
+    :type c: int
+    :type m: int
+    :rtype: int
+    """
     result = envelops = n // c
 
     while envelops >= m:
@@ -95,6 +140,11 @@ def calculate_chocolates_alt(n, c, m):
 
 # Implementation: Caesar Cipher
 def caesar(c, x):
+    """
+    :type c: str
+    :type x: int
+    :rtype: str
+    """
     ic = ord(c)
 
     if not 97 <= ic <= 122 and not 65 <= ic <= 90:
@@ -110,6 +160,11 @@ def caesar(c, x):
 
 # Implementation: The Grid Search
 def grid_search(g, p):
+    """
+    :type g: list[list[int]]
+    :type p: list[list[int]]
+    :rtype: bool
+    """
     pattern_found = False
 
     for i in range(0, len(g) - len(p) + 1):
@@ -134,6 +189,10 @@ def grid_search(g, p):
 
 # Implementation: Cavity Map
 def find_cavities(grid):
+    """
+    :type grid: list[list[str]]
+    :rtype: list[list[str]]
+    """
     for i in range(1, len(grid) - 1):
         for j in range(1, len(grid[i]) - 1):
             if (
@@ -154,6 +213,12 @@ def find_cavities(grid):
 # Implementation: Manasa and Stones
 @measure_decorator
 def find_final_stones(n, a, b):
+    """
+    :type n: int
+    :type a: int
+    :type b: int
+    :rtype: list[int]
+    """
     final_stones = set()
 
     combinations = set(itertools.combinations_with_replacement("10", n))
@@ -171,6 +236,12 @@ def find_final_stones(n, a, b):
 
 @measure_decorator
 def find_final_stones_most_efficient(n, a, b):
+    """
+    :type n: int
+    :type a: int
+    :type b: int
+    :rtype: list[int]
+    """
     s = set()
     for i in range(n):
         s.add(b * i + (n - i - 1) * a)
@@ -179,6 +250,11 @@ def find_final_stones_most_efficient(n, a, b):
 
 # Implementation: Library Fine
 def calculate_fine(d1, d2):
+    """
+    :type d1: list[int]
+    :type d2: list[int]
+    :rtype: int
+    """
     if d1[2] > d2[2]:
         return 10000
     if d1[2] == d2[2] and d1[1] > d2[1]:
@@ -190,10 +266,19 @@ def calculate_fine(d1, d2):
 
 # Implementation: ACM ICPC Team
 def known_topics_number(person1, person2):
-    return sum(1 if x[0] == '1' or x[1] == "1" else 0 for x in zip(person1, person2))
+    """
+    :type person1: str
+    :type person2: str
+    :rtype: int
+    """
+    return sum(1 if x[0] == '1' or x[1] == '1' else 0 for x in zip(person1, person2))
 
 
 def max_known_topics_teams(persons):
+    """
+    :type persons: list[str]
+    :rtype: (int, int)
+    """
     max_known_topics = 0
     max_known_topics_teams_count = 0
 
@@ -211,6 +296,10 @@ def max_known_topics_teams(persons):
 
 # Implementation: Extra long factorials
 def factorial(n):
+    """
+    :type n: int
+    :rtype: int
+    """
     f = n
     for i in range(n - 1, 0, -1):
         f = f * i
@@ -219,6 +308,14 @@ def factorial(n):
 
 # Implementation: Taum and B'day
 def calculate_min_gifts_cost(b_count, w_count, b_cost, w_cost, conversion_cost):
+    """
+    :type b_count: int
+    :type w_count: int
+    :type b_cost: int
+    :type w_cost: int
+    :type conversion_cost: int
+    :rtype: int
+    """
     real_b_cost = b_cost if b_cost <= conversion_cost + w_cost else conversion_cost + w_cost
     real_w_cost = w_cost if w_cost <= conversion_cost + b_cost else conversion_cost + b_cost
 
@@ -227,6 +324,11 @@ def calculate_min_gifts_cost(b_count, w_count, b_cost, w_cost, conversion_cost):
 
 # Omplementation: The time in words
 def time_to_words(h, m):
+    """
+    :type h: int
+    :type m: int
+    :rtype: str
+    """
     hours = {
         0: "o' clock",
         1: "one",
@@ -290,6 +392,11 @@ def time_to_words(h, m):
 
 # Implementation: Modified Kaprekar Numbers
 def find_kaprecar_numbers(p, q):
+    """
+    :type p: int
+    :type q: int
+    :rtype: list[int]
+    """
     kaprecar_numbers = list()
     for i in range(p, q + 1):
         square = str(i ** 2)
@@ -302,6 +409,10 @@ def find_kaprecar_numbers(p, q):
 
 # Implementation: Encryption
 def encrypt(text):
+    """
+    :type text: str
+    :rtype: str
+    """
     text = text.replace(" ", "")
     # num_rows = floor(sqrt(len(text)))
     num_columns = ceil(sqrt(len(text)))
@@ -317,6 +428,11 @@ def encrypt(text):
 
 # Implementation: Matrix Rotation
 def rotate_matrix(m, n):
+    """
+    :type m: list[list[int]]
+    :type n: int
+    :rtype:  list[list[int]]
+    """
     max_c = min(len(m), len(m[0])) // 2 if min(len(m), len(m[0])) % 2 == 0 else min(len(m), len(m[0])) // 2 + 1
 
     for c in range(max_c):
